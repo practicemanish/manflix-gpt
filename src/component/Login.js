@@ -10,10 +10,14 @@ const Login = () => {
           alt="background-image"
         />
       </div>
-      <form className='w-3/12 absolute p-12 bg-black my-36 mx-auto right-0 left-0'>
-        <input type='text' placeholder='Email Address' className='p-2 m-2' />
-        <input type='text' placeholder='password' className='p-2 m-2 ' />
-        <button className='p-4 m-4'>Sign In</button>
+      <form className='w-3/12 absolute p-12 bg-black my-36 mx-auto right-0 left-0 text-white bg-opacity-80'>
+      <h1 className='font-bold text-3xl py-4'>Sign In</h1>
+
+        <input type='text' placeholder='Email Address' className='p-4 m-2 w-full bg-gray-700 rounded-lg' />
+
+        <input type='text' placeholder='password' className='p-4 m-2 w-full  bg-gray-700 rounded-lg ' />
+
+        <button className='p-3 m-2 bg-red-700 w-full rounded-lg '>Sign In</button>
       </form>
     </div>
   );
