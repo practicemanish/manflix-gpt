@@ -84,6 +84,9 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
         -Sign  up  form
         --Form Validation
         -useRef hook
+        -firebase setup
+        -deploying our app to production
+        -
 
 -browse page (After authentiction)
   -Header
