@@ -1,8 +1,29 @@
-import {useState} from 'react';
+import {useRef, useState} from 'react';
 import Header from './Header';
+import { checkValidData } from '../utils/validate';
 
 const Login = () => {
   const [isSignInForm, setIsSignInForm] = useState (true);
+  const[errorMessage, seterrorMessage] = useState(null);
+
+  const email = useRef(null);
+  const password = useRef(null);
+
+  const handleButtonClick = () =>{
+    //  Validate the form data
+    
+
+    console.log(email.current.value);
+    console.log(password.current.value);
+
+    const message = checkValidData(email.current.value, password.current.value);
+    seterrorMessage(message);
+    
+    // SignIn /SignUp
+
+
+
+  }
 
   const toggleSignInForm = () => {
     setIsSignInForm (!isSignInForm);
@@ -16,7 +37,7 @@ const Login = () => {
           alt="background-image"
         />
       </div>
-      <form className="w-3/12 absolute p-12 bg-black my-36 mx-auto right-0 left-0 text-white bg-opacity-80">
+      <form onSubmit={(e) => e.preventDefault() } className="w-3/12 absolute p-12 bg-black my-36 mx-auto right-0 left-0 text-white bg-opacity-80">
         <h1 className="font-bold text-3xl py-4">
           {isSignInForm ? 'Sign In' : 'Sign Up'}
         </h1>
@@ -29,20 +50,31 @@ const Login = () => {
           />}
 
         <input
-          type="text" 
+        ref={email}
+          type="text"
           placeholder="Email Address"
           className="p-4 m-2 w-full bg-gray-700 rounded-lg"
         />
 
         <input
+        ref={password}
           type="text"
           placeholder="password"
           className="p-4 m-2 w-full  bg-gray-700 rounded-lg "
         />
+        <p className='text-red-700 font-bold text-lg py-2 px-2'>{errorMessage}</p>
 
-        <button className="p-3 m-2 bg-red-700 w-full rounded-lg ">
+        <button className="p-3 m-2 bg-red-700 w-full rounded-lg " onClick={handleButtonClick} >
           {isSignInForm ? 'Sign In' : 'Sign Up'}
         </button>
+        <div className="flex items-center m-2 text-gray-400 text-sm">
+          <input
+            type="checkbox"
+            id="rememberMe"
+            className="mr-2 accent-red-600"
+          />
+          <label htmlFor="rememberMe">Remember me</label>
+        </div>
 
         <p className="py-4 cursor-pointer" onClick={toggleSignInForm}>
           {isSignInForm

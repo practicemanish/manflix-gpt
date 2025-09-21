@@ -79,6 +79,11 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 -Login/ Sign up
         -Sign in / Signup
         -redirect to browser
+        -Add page router
+        -Log in form
+        -Sign  up  form
+        --Form Validation
+        -useRef hook
 
 -browse page (After authentiction)
   -Header
