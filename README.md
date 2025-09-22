@@ -87,6 +87,8 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
         -firebase setup
         -deploying our app to production
         -create sign up user in firebase
+        -Implement Sign in user api 
+        - created redux store for my app with useSlice
 
 -browse page (After authentiction)
   -Header
