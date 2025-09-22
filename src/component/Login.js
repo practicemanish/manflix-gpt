@@ -4,6 +4,7 @@ import {checkValidData} from '../utils/validate';
 import {createUserWithEmailAndPassword} from 'firebase/auth';
 import {auth} from '../utils/firebase';
 import {signInWithEmailAndPassword} from 'firebase/auth';
+import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
   const [isSignInForm, setIsSignInForm] = useState (true);
@@ -11,6 +12,7 @@ const Login = () => {
 
   const email = useRef (null);
   const password = useRef (null);
+  const navigate =useNavigate();
 
   const handleButtonClick = () => {
     //  Validate the form data
@@ -37,6 +39,7 @@ const Login = () => {
           // Signed up
           const user = userCredential.user;
           console.log (user);
+           navigate("/browse");
           // ...
         })
         .catch (error => {
@@ -56,6 +59,7 @@ const Login = () => {
           // Signed in
           const user = userCredential.user;
           console.log(user);
+           navigate("/browse");
           // ...
         })
         .catch (error => {
