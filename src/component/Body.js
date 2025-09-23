@@ -11,7 +11,6 @@ import {addUser, removeUser} from '../utils/userSlice';
 const Body = () => {
   const dispatch = useDispatch ();
 
-
   const appRouter = createBrowserRouter ([
     {
       path: '/',
@@ -30,13 +29,9 @@ const Body = () => {
         //
         const {uid, email, displayName} = user.uid;
         dispatch (addUser ({uid: uid, email: email, displayName: displayName}));
-       
-
-
       } else {
         // user is signed oult
         dispatch (removeUser ());
-       
       }
     });
   }, []);

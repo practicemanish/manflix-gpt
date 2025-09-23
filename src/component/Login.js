@@ -4,7 +4,7 @@ import {checkValidData} from '../utils/validate';
 import {createUserWithEmailAndPassword} from 'firebase/auth';
 import {auth} from '../utils/firebase';
 import {signInWithEmailAndPassword} from 'firebase/auth';
-import { useNavigate } from 'react-router-dom';
+import {useNavigate} from 'react-router-dom';
 
 const Login = () => {
   const [isSignInForm, setIsSignInForm] = useState (true);
@@ -12,7 +12,7 @@ const Login = () => {
 
   const email = useRef (null);
   const password = useRef (null);
-  const navigate =useNavigate();
+  const navigate = useNavigate ();
 
   const handleButtonClick = () => {
     //  Validate the form data
@@ -39,7 +39,7 @@ const Login = () => {
           // Signed up
           const user = userCredential.user;
           console.log (user);
-           navigate("/browse");
+          navigate ('/browse');
           // ...
         })
         .catch (error => {
@@ -58,14 +58,14 @@ const Login = () => {
         .then (userCredential => {
           // Signed in
           const user = userCredential.user;
-          console.log(user);
-           navigate("/browse");
+          console.log (user);
+          navigate ('/browse');
           // ...
         })
         .catch (error => {
           const errorCode = error.code;
           const errorMessage = error.message;
-          seterrorMessage(errorCode + "_" + errorMessage);
+          seterrorMessage (errorCode + '_' + errorMessage);
         });
     }
   };
@@ -80,7 +80,6 @@ const Login = () => {
         <img
           src="https://assets.nflxext.com/ffe/siteui/vlv3/c95abc7a-8124-4630-bb7a-3b160bdc6de3/web/IN-en-20250915-TRIFECTA-perspective_d3d87aa7-58ed-4c6b-98dc-231ed05ba675_medium.jpg"
           alt="background-image"
-          
         />
       </div>
       <form
@@ -130,7 +129,10 @@ const Login = () => {
           <label htmlFor="rememberMe">Remember me</label>
         </div>
 
-        <p className="py-4 cursor-pointer text-sm sm:text-base" onClick={toggleSignInForm}>
+        <p
+          className="py-4 cursor-pointer text-sm sm:text-base"
+          onClick={toggleSignInForm}
+        >
           {isSignInForm
             ? 'New to Netflix? Sign Up Now'
             : 'Already User? log In Now'}
