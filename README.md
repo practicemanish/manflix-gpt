@@ -89,6 +89,9 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
         -create sign up user in firebase
         -Implement Sign in user api 
         - created redux store for my app with useSlice
+        -fetch from TMDB movies
+        -BugFix: SignUp user displayName 
+        -BugFix: If the user is not logged in Redirect/browse to login page and vice-versa
 
 -browse page (After authentiction)
   -Header

@@ -4,7 +4,6 @@ import {checkValidData} from '../utils/validate';
 import {createUserWithEmailAndPassword, updateProfile} from 'firebase/auth';
 import {auth} from '../utils/firebase';
 import {signInWithEmailAndPassword} from 'firebase/auth';
-import {useNavigate} from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { addUser } from '../utils/userSlice';
 
@@ -16,7 +15,7 @@ const Login = () => {
   const  name = useRef(null);
   const email = useRef (null);
   const password = useRef (null);
-  const navigate = useNavigate ();
+
 
 
   const handleButtonClick = () => {
@@ -55,10 +54,10 @@ const Login = () => {
                 displayName: displayName
               })
             );
-            navigate ('/browse');
+            
           })
           console.log (user);
-          navigate ('/browse');
+          
           // ...
         })
         .catch (error => {
@@ -78,7 +77,7 @@ const Login = () => {
           // Signed in
           const user = userCredential.user;
           console.log (user);
-          navigate ('/browse');
+         
           // ...
         })
         .catch (error => {
