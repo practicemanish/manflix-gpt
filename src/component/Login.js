@@ -1,18 +1,23 @@
 import {useRef, useState} from 'react';
 import Header from './Header';
 import {checkValidData} from '../utils/validate';
-import {createUserWithEmailAndPassword} from 'firebase/auth';
+import {createUserWithEmailAndPassword, updateProfile} from 'firebase/auth';
 import {auth} from '../utils/firebase';
 import {signInWithEmailAndPassword} from 'firebase/auth';
 import {useNavigate} from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { addUser } from '../utils/userSlice';
 
 const Login = () => {
   const [isSignInForm, setIsSignInForm] = useState (true);
   const [errorMessage, seterrorMessage] = useState (null);
 
+  const dispatch = useDispatch();
+  const  name = useRef(null);
   const email = useRef (null);
   const password = useRef (null);
   const navigate = useNavigate ();
+
 
   const handleButtonClick = () => {
     //  Validate the form data
@@ -38,6 +43,20 @@ const Login = () => {
         .then (userCredential => {
           // Signed up
           const user = userCredential.user;
+          updateProfile(user, {
+           displayName: name.current.value,
+          })
+          .then(()=>{
+            const {uid, email, displayName} = auth.currentUser;
+            dispatch(
+              addUser({
+                uid: uid,
+                email: email,
+                displayName: displayName
+              })
+            );
+            navigate ('/browse');
+          })
           console.log (user);
           navigate ('/browse');
           // ...
@@ -92,6 +111,7 @@ const Login = () => {
 
         {!isSignInForm &&
           <input
+          ref={name}
             type="text"
             placeholder="Full Name"
             className="p-4 sm:p-4  m-2 w-full  bg-gray-700 rounded-lg "
@@ -106,7 +126,7 @@ const Login = () => {
 
         <input
           ref={password}
-          type="text"
+          type="type Password"
           placeholder="password"
           className="p-3 m-2 w-full  bg-gray-700 rounded-lg "
         />
